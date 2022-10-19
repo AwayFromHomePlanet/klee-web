@@ -18,6 +18,8 @@ def load_fixtures(apps, schema_editor):
         add_fixtures(apps, fixtures, "Tutorials")
         # Create example project
         add_fixtures(apps, fixtures, "Examples")
+        # Create challenge project
+        add_fixtures(apps, fixtures, "Challenges")
 
 
 def add_fixtures(apps, fixtures, title):
