@@ -9,6 +9,7 @@ from celery.exceptions import SoftTimeLimitExceeded
 from worker.runner import WorkerRunner
 from worker.worker_config import WorkerConfig
 
+from worker.storage.challenge_solutions import add_solution_code
 
 celery = Celery(broker=os.environ['CELERY_BROKER_URL'], backend='rpc')
 
@@ -41,6 +42,12 @@ def submit_code(self, code, email, klee_args, endpoint):
     name = self.request.hostname
     with WorkerRunner(self.request.id, endpoint, worker_name=name) as runner:
         try:
+            # At the moment, challenges start with the following pattern.
+            challenge = re.search(r"//----- (.*) -----\\", code)
+            if challenge:
+                # Find the solution code for the challenge and add it to
+                # the user's code.
+                code = add_solution_code(code, challenge.group(1))
             runner.run(code, email, klee_args)
         except SoftTimeLimitExceeded:
             result = {
