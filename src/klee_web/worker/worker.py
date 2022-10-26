@@ -37,17 +37,13 @@ def get_uptime_stats(state):
 
 
 @celery.task(name='submit_code', bind=True)
-def submit_code(self, code, email, klee_args, endpoint):
+def submit_code(self, code, filename, email, klee_args, endpoint):
     # name will hold the name of the current worker
     name = self.request.hostname
     with WorkerRunner(self.request.id, endpoint, worker_name=name) as runner:
         try:
-            # At the moment, challenges start with the following pattern.
-            challenge = re.search(r"//----- (.*) -----\\", code)
-            if challenge:
-                # Find the solution code for the challenge and add it to
-                # the user's code.
-                code = add_solution_code(code, challenge.group(1))
+            # Use the filename to add solution code if it is a challenge.
+            code = add_solution_code(code, filename)
             runner.run(code, email, klee_args)
         except SoftTimeLimitExceeded:
             result = {

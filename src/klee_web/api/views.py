@@ -91,11 +91,13 @@ class JobViewSet(viewsets.ViewSet):
         if request.user.is_authenticated:
             user = request.user
         code = request.data.get("code")
+        filename = request.data.get("name")
         email = request.data.get("email")
         args = request.data.get("run_configuration", {})
 
         task = submit_code.apply_async(
             [code,
+             filename,
              email,
              args,
              request.build_absolute_uri(reverse('jobs_notify'))],

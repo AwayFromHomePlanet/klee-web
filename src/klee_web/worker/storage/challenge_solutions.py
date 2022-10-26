@@ -1,4 +1,4 @@
-challenges = {"MAX": r"""
+challenges = {"max_challenge.c": r"""
 #include <klee/klee.h>
 #include <assert.h>
 
@@ -19,7 +19,7 @@ int main() {
   return 0;
 }
 """,
-              "FIBONACCI": r"""
+              "fibonacci_challenge": r"""
 #include<klee/klee.h>
 #include<assert.h>
 
