@@ -7,5 +7,5 @@
     name: "{{ kleeweb_container }}"
     source: build
     force_source: yes
-  async: 1000
+  async: 10000
   poll: 5
