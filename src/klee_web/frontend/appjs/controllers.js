@@ -394,6 +394,9 @@ controllers.controller('ResultTabsCtrl', [
             },
             testcases: {
                 active: false
+            },
+            failed_testcases: {
+                active: false
             }
         };
 
@@ -421,6 +424,18 @@ controllers.controller('ResultTabsCtrl', [
 ]);
 
 controllers.controller('TestcasesPaginationCtrl', [
+    '$scope',
+    function($scope){
+        // Pagination settings
+        $scope.currentPage = 1;
+        $scope.maxSize = 5;
+
+        $scope.$watch('currentPage', function() {
+        })
+    }
+]);
+
+controllers.controller('FailedTestcasesPaginationCtrl', [
     '$scope',
     function($scope){
         // Pagination settings
