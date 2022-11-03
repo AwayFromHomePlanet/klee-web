@@ -109,6 +109,7 @@ controllers.controller('MainCtrl', [
             buildConfiguration();
             $rootScope.startNanobar();
             $scope.submitted = true;
+            $scope.intermediate_results = [];
             $scope.result = {};
             $scope.progress = [];
             $scope.progress.push('Job queued!');
@@ -137,7 +138,7 @@ controllers.controller('MainCtrl', [
                       $interval.cancel(fetch);
                     }
                   });
-                }, 1000);
+                }, 500);
 
               }
             )

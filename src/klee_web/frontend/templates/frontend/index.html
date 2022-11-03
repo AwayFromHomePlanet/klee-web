@@ -509,7 +509,7 @@
                                                 id="klee-failed-testcases-pagination">
                                     </pagination>
                                 </div>
-                                <div ng-repeat="desc in result.test_cases[result.failed_tests[currentPage - 1].test_no - 1].desc">
+                                <div ng-repeat="desc in result.test_cases[currentPage - 1].desc">
                                     <pre class="progress-step code">[[ desc ]]</pre>
                                 </div>
                                 <table class="table code">
@@ -522,8 +522,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat-start="mem_obj in result.test_cases[result.failed_tests[currentPage - 1]
-                                                        .test_no - 1].mem_objs">
+                                    <tr ng-repeat-start="mem_obj in result.test_cases[currentPage - 1]
+                                                        .mem_objs">
                                         <td>
 {#                                            FIXME: fix button styling issue, for some reason can't use css class#}
                                             <button style="background: #2f3133; color: #FFFFFF; border-radius: 3px; border-width: 1px"

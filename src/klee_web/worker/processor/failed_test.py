@@ -23,12 +23,13 @@ class FailedTestProcessor(BaseProcessor):
             content = f.read().splitlines()
 
         line_no = int(self.parse_line_number(content[2]))
+        test_no = int(self.parse_test_case_no(file_name))
 
         return {
             'reason': self.parse_reason(content[0]).capitalize(),
             'line_no': line_no,
             'line': self.get_line_content(line_no),
-            'test_no': self.parse_test_case_no(file_name)
+            'test_no': test_no
         }
 
     @staticmethod
@@ -45,9 +46,9 @@ class FailedTestProcessor(BaseProcessor):
 
     @staticmethod
     def parse_test_case_no(file_name):
-        pattern = re.compile(r'([ktestr.0]+)')
+        pattern = re.compile(r'([a-z.0]+)')
         test_no = re.sub(pattern, '', file_name)
-        return int(test_no)
+        return test_no
 
     def process(self):
         error_files = filter(lambda f: f.endswith('.err'),
