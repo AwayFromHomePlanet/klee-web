@@ -75,6 +75,24 @@
             "min_sym_args": 0,
             "max_sym_args": 0,
             "size_sym_args": 0
+        },
+        {
+            "name": "sum_digits_challenge.c",
+            "num_files": 0,
+            "size_files": 0,
+            "size_sym_in": 0,
+            "min_sym_args": 0,
+            "max_sym_args": 0,
+            "size_sym_args": 0
+        },
+        {
+            "name": "binary_challenge.c",
+            "num_files": 0,
+            "size_files": 0,
+            "size_sym_in": 0,
+            "min_sym_args": 0,
+            "max_sym_args": 0,
+            "size_sym_args": 0
         }
     ]
 }

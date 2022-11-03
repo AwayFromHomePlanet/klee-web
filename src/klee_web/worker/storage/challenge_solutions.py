@@ -42,7 +42,77 @@ int main() {
   klee_assume(param1 < 100);
   assert(sample_fib(param1) == fibonacci(param1));
   return 0;
-}"""}
+}
+""",
+              "sum_digits_challenge.c": r"""
+#include<klee/klee.h>
+#include<assert.h>
+
+int sample_sum_digits(n) {
+  if (n <= 0) return 0;
+  return n % 10 + sum_digits(n / 10);
+}
+
+int main() {
+  int param1;
+  klee_make_symbolic(&param1, sizeof(param1), "param1");
+  klee_assume(param1 >= 0);
+  assert(sample_sum_digits(param1) == sum_digits(param1));
+  return 0;
+}
+""",
+              "binary_challenge.c": r"""
+#include<klee/klee.h>
+#include<assert.h>
+
+int sample_binary(int n) {
+  int output = 0;
+  int digit = 1;
+  while (n > 0) {
+    output += (n & 1) * digit;
+    n >>= 1;
+    digit *= 10;
+  }
+  return output;
+}
+
+int main() {
+  int param1;
+  klee_make_symbolic(&param1, sizeof(param1), "param1");
+  klee_assume(param1 >= 0);
+  klee_assume(param1 <= 1000);
+  assert(sample_binary(param1) == binary(param1));
+  return 0;
+}
+""",
+              "base_converter_challenge.c": r"""
+#include<klee/klee.h>
+#include<assert.h>
+
+int sample_base_converter(int n, int base) {
+  int output = 0;
+  int digit = 1;
+  while (n > 0) {
+    output += (n % base) * digit;
+    n /= base;
+    digit *= 10;
+  }
+  return output;
+}
+
+int main() {
+  int param1;
+  int param2;
+  klee_make_symbolic(&param1, sizeof(param1), "param1");
+  klee_make_symbolic(&param2, sizeof(param2), "param2");
+  klee_assume(param1 >= 0);
+  klee_assume(param1 <= 1000);
+  klee_assume(param2 > 1);
+  klee_assume(param2 < 10);
+  assert(sample_base_converter(param1, param2) == base_converter(param1, param2));
+  return 0;
+}
+"""}
 
 
 def add_solution_code(code, challenge_name):
