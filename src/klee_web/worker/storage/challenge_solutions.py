@@ -38,9 +38,9 @@ int sample_fib(int param1) {
 int main() {
   int param1;
   klee_make_symbolic(&param1, sizeof(param1), "param1");
-  if (param1 >= 0 && param1 < 100) {
-    assert(sample_fib(param1) == fibonacci(param1));
-  }
+  klee_assume(param1 >= 0);
+  klee_assume(param1 < 100);
+  assert(sample_fib(param1) == fibonacci(param1));
   return 0;
 }"""}
 
