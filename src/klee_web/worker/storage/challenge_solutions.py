@@ -109,7 +109,8 @@ int main() {
   klee_assume(param1 <= 1000);
   klee_assume(param2 > 1);
   klee_assume(param2 < 10);
-  assert(sample_base_converter(param1, param2) == base_converter(param1, param2));
+  assert(sample_base_converter(param1, param2) ==
+         base_converter(param1, param2));
   return 0;
 }
 """}
@@ -118,7 +119,7 @@ int main() {
 def add_solution_code(code, challenge_name):
     sample_code = challenges.get(challenge_name, "")
     challenge_func = challenge_name.replace("_challenge.c", "")
-    param_search = re.search(challenge_func + r"\s*\(([^)]*)", code)
+    param_search = re.search(challenge_func + r"\s*\(([^)]*)\s*\)\s*\{", code)
     if param_search:
         params = param_search.group(1)
         param_list = re.findall(r"[^)a-z]*\w*\s*(\w*)", params)
