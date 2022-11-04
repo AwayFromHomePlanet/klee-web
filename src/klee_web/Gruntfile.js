@@ -167,10 +167,14 @@ module.exports = function (grunt) {
 
                     // Application JS
         			'<%= config.frontend_dist %>/js/app.min.js': [
-                        '<%= config.app %>/services.js',
-                        '<%= config.app %>/controllers.js',
-                        '<%= config.app %>/directives.js',
-                        '<%= config.app %>/filters.js',
+                        '<%= config.app %>/services/services.module.js',
+                        '<%= config.app %>/services/*.resource.js',
+                        '<%= config.app %>/controllers/controllers.module.js',
+                        '<%= config.app %>/controllers/*.controller.js',
+                        '<%= config.app %>/directives/directives.module.js',
+                        '<%= config.app %>/directives/*.directive.js',
+                        '<%= config.app %>/filters/filters.module.js',
+                        '<%= config.app %>/filters/*.filter.js',
                         '<%= config.app %>/app.js',
                     ]
         		}
