@@ -393,9 +393,6 @@ controllers.controller('ResultTabsCtrl', [
             coverage: {
                 active: false
             },
-            testcases: {
-                active: false
-            },
             failed_testcases: {
                 active: false
             }
