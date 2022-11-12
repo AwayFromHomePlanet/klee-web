@@ -355,10 +355,10 @@
                                     <a href="#"
                                        ng-click="setTab('coverage')">Coverage</a>
                                 </li>
-                                <li ng-class="{active: tabs.testcases.active}"
-                                    id="klee-testcases-btn">
+                                <li ng-class="{active: tabs.failed_testcases.active}"
+                                    id="klee-failed-testcases-btn">
                                     <a href="#"
-                                       ng-click="setTab('testcases')">Test Cases</a>
+                                       ng-click="setTab('failed_testcases')">Failed Test Cases</a>
                                 </li>
                             </ul>
                         </nav>
@@ -388,6 +388,7 @@
                                          ng-repeat="fail in result.failed_tests">
                                         <pre class="error-description code">[[ fail.reason ]] on line [[ fail.line_no ]].</pre>
                                         <pre class="error-line code">[[ fail.line ]]</pre>
+                                        <pre class="error-test-case-no code">Test no.: [[ fail.test_no ]]</pre>
                                     </div>
                                 </div>
 
@@ -419,13 +420,12 @@
                                      ui-refresh="tabs.coverage.active"
                                      class="cml-codemirror-refresh"></div>
                             </div>
-
-                            <div class="tab-content-inner klee-testcases"
-                                 ng-show="tabs.testcases.active"
-                                 ng-controller="TestcasesPaginationCtrl">
+                            <div class="tab-content-inner klee-failed-testcases"
+                                ng-show="tabs.failed_testcases.active"
+                                ng-controller="FailedTestcasesPaginationCtrl">
                                 <div class="justify-content-center">
                                     <pagination ng-model="currentPage"
-                                                total-items="result.test_cases.length"
+                                                total-items="result.failed_tests.length"
                                                 max-size="maxSize"
                                                 boundary-links="true"
                                                 items-per-page="1"
@@ -434,10 +434,11 @@
                                                 next-text="&rsaquo;"
                                                 first-text="&laquo;"
                                                 last-text="&raquo;"
-                                                id="klee-testcases-pagination">
+                                                id="klee-failed-testcases-pagination">
                                     </pagination>
                                 </div>
-                                <div ng-repeat="desc in result.test_cases[currentPage - 1].desc">
+                                <div ng-repeat="desc in result.test_cases[result.failed_tests
+                                                [currentPage - 1].test_no - 1].desc">
                                     <pre class="progress-step code">[[ desc ]]</pre>
                                 </div>
                                 <table class="table code">
@@ -450,7 +451,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat-start="mem_obj in result.test_cases[currentPage - 1].mem_objs">
+                                    <tr ng-repeat-start="mem_obj in result.test_cases[result.failed_tests
+                                                         [currentPage - 1].test_no - 1].mem_objs">
                                         <td>
 {#                                            FIXME: fix button styling issue, for some reason can't use css class#}
                                             <button style="background: #2f3133; color: #FFFFFF; border-radius: 3px; border-width: 1px"

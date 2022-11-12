@@ -109,6 +109,7 @@ controllers.controller('MainCtrl', [
             buildConfiguration();
             $rootScope.startNanobar();
             $scope.submitted = true;
+            $scope.intermediate_results = [];
             $scope.result = {};
             $scope.progress = [];
             $scope.progress.push('Job queued!');
@@ -137,7 +138,7 @@ controllers.controller('MainCtrl', [
                       $interval.cancel(fetch);
                     }
                   });
-                }, 1000);
+                }, 500);
 
               }
             )
@@ -392,7 +393,7 @@ controllers.controller('ResultTabsCtrl', [
             coverage: {
                 active: false
             },
-            testcases: {
+            failed_testcases: {
                 active: false
             }
         };
@@ -421,6 +422,18 @@ controllers.controller('ResultTabsCtrl', [
 ]);
 
 controllers.controller('TestcasesPaginationCtrl', [
+    '$scope',
+    function($scope){
+        // Pagination settings
+        $scope.currentPage = 1;
+        $scope.maxSize = 5;
+
+        $scope.$watch('currentPage', function() {
+        })
+    }
+]);
+
+controllers.controller('FailedTestcasesPaginationCtrl', [
     '$scope',
     function($scope){
         // Pagination settings
