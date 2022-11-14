@@ -1,3 +1,4 @@
+import * as angular from 'angular';
 import {controllers} from './controllers.module';
 
 controllers.controller('ResultTabsCtrl', [

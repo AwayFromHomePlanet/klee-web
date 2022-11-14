@@ -1,4 +1,5 @@
 import {directives} from './directives.module';
+declare var Nanobar: any;
 
 directives.directive('nanobar', [
     '$log',

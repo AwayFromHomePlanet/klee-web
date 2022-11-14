@@ -1,3 +1,4 @@
+import * as angular from 'angular';
 import {controllers} from './controllers.module';
 
 controllers.controller('MainCtrl', [
@@ -75,7 +76,7 @@ controllers.controller('MainCtrl', [
             $scope.submission = angular.copy($scope.defaultSubmission);
         }
 
-        var saveTimeout = null;
+        var saveTimeout: any = null;
         var lastSaveTime = 0;
         const MIN_SAVE_INTERVAL = 2000; // 2 seconds
 
@@ -98,7 +99,7 @@ controllers.controller('MainCtrl', [
         }, true);
         
         var buildConfiguration = function() {
-            for (opt in $scope.opts) {
+            for (const opt in $scope.opts) {
                 $scope.submission.runConfiguration[opt] 
                     = $scope.opts[opt] ? $scope.config[opt] 
                     : $scope.defaultSubmission.runConfiguration[opt]
@@ -120,10 +121,9 @@ controllers.controller('MainCtrl', [
             // We get a task id from submitting!
             .success(
               function(data, status, headers) {
-                taskId = data.taskId;
                 var fetch = $interval(function () {
-                  $http.get('/jobs/status/' + taskId + '/').success(function(data, status, headers) {
-                    m = angular.fromJson(data);
+                  $http.get('/jobs/status/' + data.taskId + '/').success(function(data, status, headers) {
+                    var m = angular.fromJson(data);
                     var type = m['type'];
                     if(type == 'notification') {
                       data = angular.fromJson(m.data);
@@ -187,7 +187,7 @@ controllers.controller('MainCtrl', [
             }
             $scope.editor.addLineClass(lines.length, 'wrap', 'line-null');
 
-            $scope.linePercentage = (linesHit / linesTotal).toFixed(2) * 100;
+            $scope.linePercentage = +(linesHit / linesTotal).toFixed(2) * 100;
 
             $scope.editor.focus();
         };

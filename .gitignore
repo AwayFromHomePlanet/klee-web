@@ -21,3 +21,4 @@ doc/*.pdf
 src/frontend/static/*
 src/klee_web/frontend/components/*
 src/klee_web/frontend/sass/bootstrap/*
+src/klee_web/.tscache

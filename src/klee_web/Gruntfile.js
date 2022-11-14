@@ -25,14 +25,14 @@ module.exports = function (grunt) {
         			// Copy Bootstrap sass to sass working dir
         			{
         				expand: true,
-        				cwd: '<%= config.lib %>/bootstrap-sass-official/assets/stylesheets/bootstrap',
+        				cwd: '<%= config.lib %>/bootstrap-sass/assets/stylesheets/bootstrap',
         				src: ['**/*'],
         				dest: '<%= config.sass %>/bootstrap'
         			},
         			// Copy Bootstrap assets to dist dirs
         			{
         				expand: true,
-                        cwd: '<%= config.lib %>/bootstrap-sass-official/assets/fonts',
+                        cwd: '<%= config.lib %>/bootstrap-sass/assets/fonts',
                         src: ['**/*'],
                         dest: '<%= config.frontend_dist %>/fonts'
                     },
@@ -152,8 +152,8 @@ module.exports = function (grunt) {
         	dist: {
         		files: {
                     '<%= config.frontend_dist %>/js/vendor/bootstrap.min.js': [
-                        '<%= config.lib %>/bootstrap-sass-official/assets/javascripts/bootstrap.js',
-                        '<%= config.lib %>/bootstrap-sass-official/assets/javascripts/bootstrap/*.js',
+                        '<%= config.lib %>/bootstrap-sass/assets/javascripts/bootstrap.js',
+                        '<%= config.lib %>/bootstrap-sass/assets/javascripts/bootstrap/*.js',
                     ],
                     '<%= config.frontend_dist %>/js/vendor/codemirror.min.js': [
                         '<%= config.lib %>/codemirror/lib/codemirror.js',
@@ -215,7 +215,8 @@ module.exports = function (grunt) {
             },
             options: {
                 sourceMap: false,
-                module: 'amd'
+                module: 'amd',
+                moduleResolution: 'node'
             }
         }
     });

@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+import * as _ from 'underscore';
 import {controllers} from './controllers.module';
 
 controllers.controller('SidebarCtrl', [
@@ -73,7 +75,7 @@ controllers.controller('SidebarCtrl', [
                 var selectedProject = $scope.$parent.selectedProject;
                 $scope.$parent.submission = file;
                 selectedProject.defaultFile = file.id;
-                for (opt in $scope.opts) {
+                for (const opt in $scope.opts) {
                   if (file.runConfiguration[opt].size) {
                     $scope.opts[opt] = true;
                   }
