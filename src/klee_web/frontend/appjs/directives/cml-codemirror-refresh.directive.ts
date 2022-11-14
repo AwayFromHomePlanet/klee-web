@@ -1,3 +1,5 @@
+import {directives} from './directives.module';
+
 directives.directive('cmlCodemirrorRefresh', [
     '$timeout',
     function ($timeout) {

@@ -1,3 +1,5 @@
+import {controllers} from './controllers.module';
+
 controllers.controller('MainCtrl', [
     '$scope', '$http', '$rootScope', 'Project', 'File', '$interval',
     function($scope, $http, $rootScope, Project, File, $interval) {

@@ -1,3 +1,5 @@
+import {directives} from './directives.module';
+
 directives.directive('focus', [
     '$timeout',
     function ($timeout) {

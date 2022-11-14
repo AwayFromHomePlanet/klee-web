@@ -1,3 +1,5 @@
+import {filters} from './filters.module';
+
 filters.filter('truncate', [
     function() {
         return function(input, limit) {

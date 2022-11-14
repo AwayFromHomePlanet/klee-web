@@ -1,2 +1,3 @@
 import * as angular from 'angular';
-var directives = angular.module('directives', []);
+
+export var directives = angular.module('directives', []);

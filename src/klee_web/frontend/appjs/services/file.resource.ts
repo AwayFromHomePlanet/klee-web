@@ -1,3 +1,5 @@
+import {services} from './services.module';
+
 services.factory('File', [
     '$resource',
     function($resource) {

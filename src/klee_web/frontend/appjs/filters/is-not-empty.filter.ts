@@ -1,3 +1,5 @@
+import {filters} from './filters.module';
+
 filters.filter('isNotEmpty', [
     function() {
         var bar;

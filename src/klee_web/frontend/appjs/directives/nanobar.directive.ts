@@ -1,3 +1,5 @@
+import {directives} from './directives.module';
+
 directives.directive('nanobar', [
     '$log',
     '$rootScope',

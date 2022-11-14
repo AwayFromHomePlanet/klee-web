@@ -1,3 +1,5 @@
+import {controllers} from './controllers.module';
+
 controllers.controller('SidebarCtrl', [
     '$scope', 'Project', 'File', 'FileUploader', '$cookies',
     function($scope, Project, File, FileUploader, $cookies) {

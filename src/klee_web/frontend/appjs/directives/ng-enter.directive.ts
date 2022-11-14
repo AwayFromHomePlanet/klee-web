@@ -1,3 +1,5 @@
+import {directives} from './directives.module';
+
 directives.directive('ngEnter', [
     function() {
         return function (scope, element, attrs) {
