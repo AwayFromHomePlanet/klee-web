@@ -1,5 +1,5 @@
 var config = {
-  lib: './frontend/components',
+  lib: './node_modules',
   assets: './frontend/assets',
   sass: './frontend/sass',
   app: './frontend/appjs',
@@ -12,7 +12,6 @@ module.exports = function (grunt) {
     grunt.initConfig({
         config: config,
         pkg: grunt.file.readJSON('package.json'),
-        bower: grunt.file.readJSON('./.bowerrc'),
         copy: {
         	dist: {
         		files: [
@@ -124,26 +123,26 @@ module.exports = function (grunt) {
                 files: [
                     {
                         '<%= config.frontend_dist %>/js/vendor/lib.min.js': [
-                            '<%= bower.directory %>/jquery/dist/jquery.min.js',
-                            '<%= bower.directory %>/underscore/underscore-min.js',
+                            '<%= config.lib %>/jquery/dist/jquery.min.js',
+                            '<%= config.lib %>/underscore/underscore-min.js',
                         ],
                         '<%= config.frontend_dist %>/js/vendor/angular-custom.min.js':
                             [
-                                '<%= bower.directory %>/angular/angular.min.js',
-                                '<%= bower.directory %>/angular-resource/angular-resource.min.js',
-                                '<%= bower.directory %>/angular-cookies/angular-cookies.min.js',
-                                '<%= bower.directory %>/angular-animate/angular-animate.min.js',
+                                '<%= config.lib %>/angular/angular.min.js',
+                                '<%= config.lib %>/angular-resource/angular-resource.min.js',
+                                '<%= config.lib %>/angular-cookies/angular-cookies.min.js',
+                                '<%= config.lib %>/angular-animate/angular-animate.min.js',
                             ],
                         '<%= config.frontend_dist %>/js/vendor/angular-bootstrap.min.js':
                             [
-                                '<%= bower.directory %>/angular-bootstrap/ui-bootstrap.min.js',
-                                '<%= bower.directory %>/angular-bootstrap/ui-bootstrap-tpls.min.js',
+                                '<%= config.lib %>/angular-bootstrap/ui-bootstrap.min.js',
+                                '<%= config.lib %>/angular-bootstrap/ui-bootstrap-tpls.min.js',
                             ],
                         '<%= config.frontend_dist %>/js/vendor/angular-file-upload.min.js':
                             [
-                                '<%= bower.directory %>/angular-file-upload/angular-file-upload.min.js',
-                                '<%= bower.directory %>/es5-shim/es5-shim.min.js',
-                                '<%= bower.directory %>/es5-shim/es5-sham.min.js',
+                                '<%= config.lib %>/angular-file-upload/angular-file-upload.min.js',
+                                '<%= config.lib %>/es5-shim/es5-shim.min.js',
+                                '<%= config.lib %>/es5-shim/es5-sham.min.js',
                             ],
                     }
                 ]
@@ -153,16 +152,16 @@ module.exports = function (grunt) {
         	dist: {
         		files: {
                     '<%= config.frontend_dist %>/js/vendor/bootstrap.min.js': [
-                        '<%= bower.directory %>/bootstrap-sass-official/assets/javascripts/bootstrap.js',
-                        '<%= bower.directory %>/bootstrap-sass-official/assets/javascripts/bootstrap/*.js',
+                        '<%= config.lib %>/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+                        '<%= config.lib %>/bootstrap-sass-official/assets/javascripts/bootstrap/*.js',
                     ],
                     '<%= config.frontend_dist %>/js/vendor/codemirror.min.js': [
-                        '<%= bower.directory %>/codemirror/lib/codemirror.js',
+                        '<%= config.lib %>/codemirror/lib/codemirror.js',
                         // C syntax
-                        '<%= bower.directory %>/codemirror/mode/clike/clike.js',
+                        '<%= config.lib %>/codemirror/mode/clike/clike.js',
                     ],
                     '<%= config.frontend_dist %>/js/vendor/angular-ui-slider.min.js': [
-                        '<%= bower.directory %>/angular-ui-slider/src/slider.js',
+                        '<%= config.lib %>/angular-ui-slider/src/slider.js',
                     ],
 
                     // Application JS
@@ -209,10 +208,14 @@ module.exports = function (grunt) {
                 }
             }
         },
-        typescript: {
-            base: {
+        ts: {
+            default: {
                 src: ['<%= config.app %>/**/*.ts'],
                 dest: '<%= config.frontend_dist %>/js/app.js'
+            },
+            options: {
+                sourceMap: false,
+                module: 'amd'
             }
         }
     });
@@ -222,12 +225,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify-es');
-    grunt.loadNpmTasks('grunt-typescript');
+    grunt.loadNpmTasks('grunt-ts');
 
 	grunt.registerTask('default', [
         'concat',
         'copy',
-        'typescript',
+        'ts',
 		'uglify',
 		'sass',
 	]);

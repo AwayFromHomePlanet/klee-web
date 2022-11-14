@@ -19,6 +19,5 @@ mv "${CUR_DIR}/geoip/${CITY}_${VERSION}/${CITY}.mmdb" "${CUR_DIR}/geoip/${COUNTR
 cd ..
 
 npm install
-bower install --config.interactive=false --allow-root
 grunt
 python manage.py collectstatic --noinput
