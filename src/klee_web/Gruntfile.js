@@ -167,15 +167,7 @@ module.exports = function (grunt) {
 
                     // Application JS
         			'<%= config.frontend_dist %>/js/app.min.js': [
-                        '<%= config.app %>/services/services.module.js',
-                        '<%= config.app %>/services/*.resource.js',
-                        '<%= config.app %>/controllers/controllers.module.js',
-                        '<%= config.app %>/controllers/*.controller.js',
-                        '<%= config.app %>/directives/directives.module.js',
-                        '<%= config.app %>/directives/*.directive.js',
-                        '<%= config.app %>/filters/filters.module.js',
-                        '<%= config.app %>/filters/*.filter.js',
-                        '<%= config.app %>/app.js',
+                        '<%= config.frontend_dist %>/js/app.js'
                     ]
         		}
         	}
@@ -216,6 +208,12 @@ module.exports = function (grunt) {
                     spawn: false
                 }
             }
+        },
+        typescript: {
+            base: {
+                src: ['<%= config.app %>/**/*.ts'],
+                dest: '<%= config.frontend_dist %>/js/app.js'
+            }
         }
     });
 
@@ -224,10 +222,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify-es');
+    grunt.loadNpmTasks('grunt-typescript');
 
 	grunt.registerTask('default', [
         'concat',
         'copy',
+        'typescript',
 		'uglify',
 		'sass',
 	]);

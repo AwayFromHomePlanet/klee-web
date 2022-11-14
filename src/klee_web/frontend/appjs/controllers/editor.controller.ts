@@ -1,3 +1,5 @@
+import {controllers} from './controllers.module';
+
 controllers.controller('EditorCtrl', [
     '$scope',
     function($scope) {
