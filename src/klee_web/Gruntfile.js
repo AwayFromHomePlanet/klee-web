@@ -52,14 +52,14 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: '<%= config.lib %>/elegant-icons/css',
+                        cwd: '<%= config.lib %>/elegant-icons',
                         src: ['style.css'],
                         dest: '<%= config.frontend_dist %>/css/vendor/eleganticons'
                     },
                     {
                         expand: true,
                         cwd: '<%= config.lib %>/font-awesome/css',
-                        src: ['font-awesome.css'],
+                        src: ['font-awesome.min.css'],
                         dest: '<%= config.frontend_dist %>/css/vendor/font-awesome'
                     },
                     {
@@ -92,20 +92,20 @@ module.exports = function (grunt) {
                     // Angular Codemirror
                     {
                         expand: true,
-                        cwd: '<%= config.lib %>/angular-ui-codemirror',
-                        src: 'ui-codemirror.min.js',
+                        cwd: '<%= config.lib %>/angular-ui-codemirror/src',
+                        src: 'ui-codemirror.js',
                         dest: '<%= config.frontend_dist %>/js/vendor'
                     },
                     // JQuery UI slider
                     {
                         expand: true,
-                        cwd: '<%= config.lib %>/jquery-ui/themes/base/minified',
+                        cwd: '<%= config.lib %>/jquery-ui/dist/themes/base',
                         src: 'jquery-ui.min.css',
                         dest: '<%= config.frontend_dist %>/css/vendor'
                     },
                     {
                         expand: true,
-                        cwd: '<%= config.lib %>/jquery-ui/ui/minified',
+                        cwd: '<%= config.lib %>/jquery-ui/dist',
                         src: 'jquery-ui.min.js',
                         dest: '<%= config.frontend_dist %>/js/vendor'
                     },
@@ -200,9 +200,9 @@ module.exports = function (grunt) {
             },
             app: {
                 files: [
-                    '<%= config.app %>/*.js'
+                    '<%= config.app %>/**/*.ts'
                 ],
-                tasks: ['uglify'],
+                tasks: ['ts', 'uglify'],
                 options: {
                     spawn: false
                 }
