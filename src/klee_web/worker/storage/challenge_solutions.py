@@ -165,6 +165,8 @@ int main() {
 
 def add_solution_code(code, challenge_name):
     sample_code = challenges.get(challenge_name, "")
+    if not sample_code:
+        return code
     challenge_func = challenge_name.replace("_challenge.c", "")
     param_search = re.search(challenge_func + r"\s*\(([^)]*)\s*\)\s*\{", code)
     if param_search:
