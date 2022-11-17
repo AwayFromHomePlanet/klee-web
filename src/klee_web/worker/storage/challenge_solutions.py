@@ -160,6 +160,78 @@ int main() {
   assert(sample_log_base(param1, param2) == log_base(param1, param2));
   return 0;
 }
+""",
+              "array_max_challenge.c": r"""
+#include <klee/klee.h>
+#include <assert.h>
+
+int sample_array_max(int *l, int length) {
+  int m = l[0];
+  for (int i = 1; i < length; i++) {
+    if (l[i] > m) {
+      m = l[i];
+    }
+  }
+  return m;
+}
+
+int main() {
+  int param2 = 3;
+  int param1[param2];
+  klee_make_symbolic(&param1, sizeof(param1), "param1");
+  assert(sample_array_max(param1, param2) == array_max(param1, param2));
+  return 0;
+}
+""",
+              "array_mean_challenge.c": r"""
+#include <klee/klee.h>
+#include <assert.h>
+
+float sample_array_mean(float *l, int length) {
+  float s = 0;
+  for (int i = 0; i < length; i++) {
+    s += l[i];
+  }
+  return s / length;
+}
+
+int main() {
+  int param2 = 3;
+  float param1[param2];
+  klee_make_symbolic(&param1, sizeof(param1), "param1");
+  param1[0] = 1;
+  assert(sample_array_mean(param1, param2) == array_mean(param1, param2));
+  return 0;
+}
+""",
+              "first_distinct_challenge.c": r"""
+#include <klee/klee.h>
+#include <assert.h>
+
+int sample_first_distinct(int *l, int length) {
+  for (int i = 0; i < length; i++) {
+    int distinct = 1;
+    for (int j = 0; j < length; j++) {
+      if (i != j && l[i] == l[j]) {
+        distinct = 0;
+        break;
+      }
+    }
+    if (distinct) {
+      return l[i];
+    }
+  }
+  return -1;
+}
+
+int main() {
+  int param2 = 3;
+  int param1[param2];
+  klee_make_symbolic(&param1, sizeof(param1), "param1");
+  assert(sample_first_distinct(param1, param2) ==
+         first_distinct(param1, param2));
+  return 0;
+}
 """}
 
 

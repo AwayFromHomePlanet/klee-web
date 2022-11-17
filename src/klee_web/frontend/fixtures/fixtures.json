@@ -120,6 +120,33 @@
             "min_sym_args": 0,
             "max_sym_args": 0,
             "size_sym_args": 0
+        },
+        {
+            "name": "array_max_challenge.c",
+            "num_files": 0,
+            "size_files": 0,
+            "size_sym_in": 0,
+            "min_sym_args": 0,
+            "max_sym_args": 0,
+            "size_sym_args": 0
+        },
+        {
+            "name": "array_mean_challenge.c",
+            "num_files": 0,
+            "size_files": 0,
+            "size_sym_in": 0,
+            "min_sym_args": 0,
+            "max_sym_args": 0,
+            "size_sym_args": 0
+        },
+        {
+            "name": "first_distinct_challenge.c",
+            "num_files": 0,
+            "size_files": 0,
+            "size_sym_in": 0,
+            "min_sym_args": 0,
+            "max_sym_args": 0,
+            "size_sym_args": 0
         }
     ]
 }
