@@ -171,7 +171,7 @@ def add_solution_code(code, challenge_name):
     param_search = re.search(challenge_func + r"\s*\(([^)]*)\s*\)\s*\{", code)
     if param_search:
         params = param_search.group(1)
-        param_list = re.findall(r"[^)a-z]*\w*\s*(\w*)", params)
+        param_list = re.findall(r"\s*(\w+)\s*(?:,|$)", params)
         for i in range(len(param_list)):
             sample_code = \
                 sample_code.replace("param" + str(i + 1), param_list[i])
