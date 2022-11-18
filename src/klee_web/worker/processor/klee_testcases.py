@@ -55,7 +55,7 @@ class KleeTestCaseProcessor(BaseProcessor):
             params = params.group(1)
             param_list = re.findall(r"\s*(\w+)\s+(\w+)\s*(?:,|$)", params)
             param_types = map(lambda p : p[0], param_list)
-            return param_types
+            return list(param_types)
     
     def process(self):
         ktest_files = filter(lambda f: f.endswith('.ktest'),
