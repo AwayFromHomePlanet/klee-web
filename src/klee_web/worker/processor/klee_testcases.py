@@ -54,7 +54,7 @@ class KleeTestCaseProcessor(BaseProcessor):
         if params:
             params = params.group(1)
             param_list = re.findall(r"\s*(\w+)\s+(\w+)\s*(?:,|$)", params)
-            param_types = map(re.split(r"\s+")[0], param_list)
+            param_types = map(lambda p : p[0], param_list)
             return param_types
     
     def process(self):
