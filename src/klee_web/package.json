@@ -14,7 +14,7 @@
     "angular-ui-codemirror": "~0.3.0",
     "angular-ui-slider": "~0.4.0",
     "animate.css": "~3.2.0",
-    "bootstrap-sass": "~3.4.3",
+    "bootstrap-sass": "3.4.1",
     "bootstrap-social": "~5.0.0",
     "codemirror": "~4.8",
     "elegant-icons": "*",
