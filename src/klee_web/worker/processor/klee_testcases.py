@@ -8,8 +8,9 @@ class KleeTestCaseProcessor(BaseProcessor):
     name = 'test_cases'
     notify_message = 'Processing test cases'
 
-    def __init__(self, runner, args):
+    def __init__(self, runner, code, args):
         BaseProcessor.__init__(self, runner, args)
+        self.code = code
         self.klee_result_dir = os.path.join(runner.tempdir, 'klee-out-0')
         self.docker_result_dir = os.path.join(runner.DOCKER_MOUNT_DIR,
                                               'klee-out-0')
@@ -31,11 +32,11 @@ class KleeTestCaseProcessor(BaseProcessor):
         memObjs = []
         i = 3
 
+        
         code_file = self.runner.DOCKER_CODE_FILE
-        with open(code_file) as f:
-            user_code = f.read()
+        print(code_file)
 
-        user_param_types = self.parse_user_param_types(user_code)
+        user_param_types = self.parse_user_param_types(self.code)
 
         param_index = 0
         while i < len(data):
