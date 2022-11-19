@@ -10,5 +10,11 @@ displayed_type_mappings = {
         "hex",
         "int",
         "text"
+    ],
+    "float": [
+        "hex",
+        "int",
+        "uint",
+        "text"
     ]
 }
