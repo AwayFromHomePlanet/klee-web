@@ -129,7 +129,10 @@ class WorkerRunner():
 
         # Run processor pipeline
         for processor_cls in self.pipeline:
-            processor = processor_cls(self, klee_args)
+            if (processor_cls == KleeTestCaseProcessor):
+                processor = processor_cls(self, code, klee_args)
+            else:
+                processor = processor_cls(self, klee_args)
 
             if processor.enabled:
                 notify_message = processor.notify_message
