@@ -1,10 +1,8 @@
-import re
-
 displayed_type_mappings = {
     "int": [
         "hex",
         "int",
-        "uint" 
+        "uint"
     ],
     "char": [
         "hex",

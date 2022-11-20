@@ -4,6 +4,7 @@ import re
 from worker.processor.base import BaseProcessor
 from worker.storage.displayed_types import displayed_type_mappings
 
+
 class KleeTestCaseProcessor(BaseProcessor):
     name = 'test_cases'
     notify_message = 'Processing test cases'
@@ -32,7 +33,6 @@ class KleeTestCaseProcessor(BaseProcessor):
         memObjs = []
         i = 3
 
-        
         code_file = self.runner.DOCKER_CODE_FILE
         print(code_file)
 
@@ -40,24 +40,25 @@ class KleeTestCaseProcessor(BaseProcessor):
 
         param_index = 0
         while i < len(data):
-            obj = dict(get_kv_pairs(data[i:i+2]))
+            obj = dict(get_kv_pairs(data[i:i + 2]))
             offset = 7 if int(obj["size"]) in [1, 2, 4, 8] else 5
             obj["representations"] = \
-                [rep for rep in get_kv_pairs(data[i+2:i+offset]) \
-                    if rep[0] in displayed_type_mappings[user_param_types[param_index]]]
+                [rep for rep in get_kv_pairs(data[i + 2:i + offset])
+                 if rep[0] in displayed_type_mappings[
+                     user_param_types[param_index]]]
             memObjs.append(obj)
             i += offset
             param_index += 1
         return {"desc": ktestDesc, "mem_objs": memObjs}
 
-    def parse_user_param_types(self, code):
+    @staticmethod
+    def parse_user_param_types(code):
         params = re.search(r"\s*\(([^)]*)\s*\)\s*\{", code)
         if params:
             params = params.group(1)
-            param_list = re.findall(r"\s*(\w+)\s+(\w+)\s*(?:,|$)", params)
-            param_types = map(lambda p : p[0], param_list)
-            return list(param_types)
-    
+            param_list = re.findall(r"\s*(\w+)\s+\w+\s*(?:,|$)", params)
+            return param_list
+
     def process(self):
         ktest_files = filter(lambda f: f.endswith('.ktest'),
                              os.listdir(self.klee_result_dir))
