@@ -59,7 +59,7 @@
     ],
     "Challenges": [
         {
-            "name": "max_challenge.c",
+            "name": "max.c",
             "num_files": 0,
             "size_files": 0,
             "size_sym_in": 0,
@@ -68,7 +68,7 @@
             "size_sym_args": 0
         },
         {
-            "name": "fibonacci_challenge.c",
+            "name": "fibonacci.c",
             "num_files": 0,
             "size_files": 0,
             "size_sym_in": 0,
@@ -77,7 +77,7 @@
             "size_sym_args": 0
         },
         {
-            "name": "sum_digits_challenge.c",
+            "name": "sum_digits.c",
             "num_files": 0,
             "size_files": 0,
             "size_sym_in": 0,
@@ -86,7 +86,7 @@
             "size_sym_args": 0
         },
         {
-            "name": "binary_challenge.c",
+            "name": "binary.c",
             "num_files": 0,
             "size_files": 0,
             "size_sym_in": 0,
@@ -95,7 +95,7 @@
             "size_sym_args": 0
         },
         {
-            "name": "base_converter_challenge.c",
+            "name": "base_converter.c",
             "num_files": 0,
             "size_files": 0,
             "size_sym_in": 0,
@@ -104,7 +104,7 @@
             "size_sym_args": 0
         },
         {
-            "name": "log_2_challenge.c",
+            "name": "log_2.c",
             "num_files": 0,
             "size_files": 0,
             "size_sym_in": 0,
@@ -113,7 +113,7 @@
             "size_sym_args": 0
         },
         {
-            "name": "log_base_challenge.c",
+            "name": "log_base.c",
             "num_files": 0,
             "size_files": 0,
             "size_sym_in": 0,
@@ -122,7 +122,7 @@
             "size_sym_args": 0
         },
         {
-            "name": "array_max_challenge.c",
+            "name": "array_max.c",
             "num_files": 0,
             "size_files": 0,
             "size_sym_in": 0,
@@ -131,7 +131,7 @@
             "size_sym_args": 0
         },
         {
-            "name": "array_mean_challenge.c",
+            "name": "array_mean.c",
             "num_files": 0,
             "size_files": 0,
             "size_sym_in": 0,
@@ -140,7 +140,7 @@
             "size_sym_args": 0
         },
         {
-            "name": "first_distinct_challenge.c",
+            "name": "first_distinct.c",
             "num_files": 0,
             "size_files": 0,
             "size_sym_in": 0,

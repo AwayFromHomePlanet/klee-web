@@ -1,6 +1,6 @@
 import re
 
-challenges = {"max_challenge.c": r"""
+challenges = {"max.c": r"""
 #include <klee/klee.h>
 #include <assert.h>
 
@@ -21,7 +21,7 @@ int main() {
   return 0;
 }
 """,
-              "fibonacci_challenge.c": r"""
+              "fibonacci.c": r"""
 #include<klee/klee.h>
 #include<assert.h>
 
@@ -44,7 +44,7 @@ int main() {
   return 0;
 }
 """,
-              "sum_digits_challenge.c": r"""
+              "sum_digits.c": r"""
 #include<klee/klee.h>
 #include<assert.h>
 
@@ -61,7 +61,7 @@ int main() {
   return 0;
 }
 """,
-              "binary_challenge.c": r"""
+              "binary.c": r"""
 #include<klee/klee.h>
 #include<assert.h>
 
@@ -85,7 +85,7 @@ int main() {
   return 0;
 }
 """,
-              "base_converter_challenge.c": r"""
+              "base_converter.c": r"""
 #include<klee/klee.h>
 #include<assert.h>
 
@@ -114,7 +114,7 @@ int main() {
   return 0;
 }
 """,
-              "log_2_challenge.c": r"""
+              "log_2.c": r"""
 #include<klee/klee.h>
 #include<assert.h>
 
@@ -135,7 +135,7 @@ int main() {
   return 0;
 }
 """,
-              "log_base_challenge.c": r"""
+              "log_base.c": r"""
 #include<klee/klee.h>
 #include<assert.h>
 
@@ -161,7 +161,7 @@ int main() {
   return 0;
 }
 """,
-              "array_max_challenge.c": r"""
+              "array_max.c": r"""
 #include <klee/klee.h>
 #include <assert.h>
 
@@ -183,7 +183,7 @@ int main() {
   return 0;
 }
 """,
-              "array_mean_challenge.c": r"""
+              "array_mean.c": r"""
 #include <klee/klee.h>
 #include <assert.h>
 
@@ -204,7 +204,7 @@ int main() {
   return 0;
 }
 """,
-              "first_distinct_challenge.c": r"""
+              "first_distinct.c": r"""
 #include <klee/klee.h>
 #include <assert.h>
 
@@ -239,7 +239,7 @@ def add_solution_code(code, challenge_name):
     sample_code = challenges.get(challenge_name, "")
     if not sample_code:
         return code
-    challenge_func = challenge_name.replace("_challenge.c", "")
+    challenge_func = challenge_name.replace(".c", "")
     param_search = re.search(challenge_func + r"\s*\(([^)]*)\s*\)\s*\{", code)
     if param_search:
         params = param_search.group(1)
