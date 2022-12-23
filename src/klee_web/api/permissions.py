@@ -1,6 +1,20 @@
 from rest_framework import permissions
 
 
+class IsInClass(permissions.BasePermission):
+    """
+        Enables a user through if they are in a classroom's list of members.
+        """
+
+    def has_object_permission(self, request, view, obj):
+        students_in_class = obj.members
+
+        if request.user.id in students_in_class:
+            return True
+        else:
+            return False
+
+
 class IsOwnerOrReadOnly(permissions.BasePermission):
     """
     Object-level permission to only allow owners of an object to edit it.
