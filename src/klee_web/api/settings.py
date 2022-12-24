@@ -63,7 +63,6 @@ TEMPLATES = [
 
 # Application definition
 INSTALLED_APPS = (
-    'klee_web',
     # 'control_panel',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -76,6 +75,8 @@ INSTALLED_APPS = (
     'rest_framework_nested',
     'oauth2_provider',
     'social_django',
+    'klee_web',
+    'frontend'
 )
 
 MIDDLEWARE = (
@@ -131,7 +132,6 @@ GEOIP_PATH = 'geoip'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'klee_web', 'static')
-AUTH_USER_MODEL = 'klee_web.User'
 
 # Keys and secrets used to authenticate with Google, GitHub and Facebook
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('GOOGLE_OAUTH_KEY') or ''

@@ -1,22 +1,22 @@
 import datetime
-from django.contrib.auth.decorators import login_required
-from django.forms.utils import ErrorList
-
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseNotFound
-from django.views.decorators.csrf import csrf_exempt
-from django.urls import reverse
-from django.contrib import messages, auth
-from django.views.static import serve
-
-from .forms import SubmitJobForm, UserCreationForm, UserChangePasswordForm
-from django.contrib.gis.geoip2 import GeoIP2
-from .models import Task
 import json
 import os
 
+from django.contrib import messages, auth
+from django.contrib.auth.decorators import login_required
+from django.forms.utils import ErrorList
+from django.http import HttpResponse, HttpResponseNotFound
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.static import serve
 
-GeoIP = GeoIP2()
+from .forms import SubmitJobForm, UserCreationForm, UserChangePasswordForm
+# from django.contrib.gis.geoip2 import GeoIP2
+from .models import Task
+
+
+# GeoIP = GeoIP2()
 
 
 def index(request):
@@ -52,14 +52,14 @@ def jobs_notify(request):
             request.POST.get('data')
         )
         if type == 'job_complete' or type == 'job_failed':
-            try:
+            """try:
                 location = GeoIP.city(task.ip_address)
                 task.location = "{0}, {1}".format(location['city'],
                                                   location['country_name'])
             # If the IP is local or we cannot find a match in the database,
             # Just set the location to something
-            except:
-                task.location = 'Non public IP'
+            except:"""
+            task.location = 'Non public IP'
             task.completed_at = datetime.datetime.now()
 
             task.save()
