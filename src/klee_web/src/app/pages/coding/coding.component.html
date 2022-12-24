@@ -1,0 +1,104 @@
+<div class="h-screen bg-sky-100">
+    <div class="h-[8vh] bg-gradient-to-r from-teal-200 to-blue-600 px-8 flex items-center justify-between">
+        <a href="http://klee.doc.ic.ac.uk">
+            <img src="../../../assets/klee-logo.svg" class="h-12">
+        </a>
+        <div>
+            <a href="/classrooms">
+                <mat-icon class="navbar-icon text-blue-900 hover:text-blue-200 pr-16">backpack</mat-icon>
+            </a>
+            <a href="/profile">
+                <mat-icon class="navbar-icon text-blue-900 hover:text-blue-200">account_circle</mat-icon>
+            </a>
+        </div>
+    </div>
+    <div class="h-[92vh] grid grid-cols-12 gap-4 p-[2vh]">
+        <div class="col-span-5 h-[88vh] bg-sky-200 p-[4vh] rounded-md">
+            <mat-tab-group [selectedIndex]="tabIndex" mat-align-tabs="start" class="h-[70vh] mb-[5vh]">
+                <mat-tab label="Description">
+                    <div>
+                        <br>
+                        <h2>1. Palindrome Number</h2>
+                        <p>
+                            Given an integer x, return true if x is a palindrome, and false otherwise.
+                        </p>
+
+                        <b>Example 1</b>
+                        <div class="example">
+                            <p>Input: x = 121</p>
+                            <p>Output: true</p>
+                            <p>Explanation: 121 reads as 121 from left to right and from right to left.</p>
+                        </div>
+
+                        <b>Example 2</b>
+                        <div class="example">
+                            <p>Input: x = -121</p>
+                            <p>Output: false</p>
+                            <p>From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.</p>
+                        </div>
+
+                        <b>Example 3</b>
+                        <div class="example">
+                            <p>Input: x = 10</p>
+                            <p>Output: false</p>
+                            <p>Reads 01 from right to left. Therefore it is not a palindrome.</p>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Submissions">
+                    <table mat-table [dataSource]="allSubmissions" class="w-full mt-8">
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef> ID </th>
+                            <td mat-cell *matCellDef="let sub"> {{sub.id}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="time">
+                            <th mat-header-cell *matHeaderCellDef> Timestamp </th>
+                            <td mat-cell *matCellDef="let sub"> {{sub.time}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef> Status </th>
+                            <td mat-cell *matCellDef="let sub"
+                            [ngClass]="sub.status=='ACCEPTED' ? 'text-green-400' :
+                                (sub.status=='TLE' ? 'text-amber-600' : 'text-red-700')"
+                            class="font-bold"
+                            > {{sub.status}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+                    </table>
+                </mat-tab>
+                <mat-tab label="Statistics"></mat-tab>
+            </mat-tab-group>
+
+            <div class="flex justify-between h-[5vh]">
+                <button class="px-5 py-3 bg-cyan-500 rounded-md">
+                    <mat-icon class="relative bottom-0.5">arrow_back</mat-icon>
+                    Previous
+                </button>
+                <a href="/challenges">
+                    <button class="px-5 py-3 bg-cyan-300 rounded-md">All Problems</button>
+                </a>
+                <button class="px-5 py-3 bg-cyan-500 rounded-md">
+                    Next
+                    <mat-icon class="relative bottom-0.5">arrow_forward</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-span-7 h-[88vh] bg-white rounded-md relative">
+            <ngx-codemirror [(ngModel)]="content"
+                [options]="{
+                    lineNumbers: true,
+                    theme: 'nord',
+                    mode: 'text/x-c++src'
+                }"
+            ></ngx-codemirror>
+            <button 
+                (click)="submitCode()"
+                class="px-5 py-3 bg-cyan-500 rounded-md absolute bottom-10 right-10"
+            >Submit</button>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

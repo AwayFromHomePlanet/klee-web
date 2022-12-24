@@ -1,0 +1,123 @@
+<div class="h-screen bg-gradient-to-r from-gray-600 to-gray-100">
+    <div class="w-3/4 mx-auto">
+        <div class="grid grid-cols-8 pt-10">
+            <div class="col-span-7">
+                <div class="w-full border border-gray-600 bg-gradient-to-r from-orange-300 to-red-400 rounded-md px-6 py-4 mb-16">
+                    <p class="text-2xl" style="margin-bottom: 4rem;">Coursework 1</p>
+
+                    <div class="grid grid-cols-2">
+                        <div>
+                            <p class="text-xl">Due: 15 Nov</p>
+                        </div>
+
+                        <div>
+                            <p class="text-lg float-right">Classroom: Graphs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div></div>
+
+            <div class="col-span-7 mb-10">
+                <div class="bg-slate-50 px-6 py-4 shadow-xl">
+                    <p class="text-lg">Details:</p>
+
+                    <p class="text-md">Description.</p>
+                    <p class="text-md">Description.</p>
+                    <p class="text-md">Description.</p>
+                    <p class="text-md">Description.</p>
+                </div>
+            </div>
+
+            <div></div>
+
+            <div class="col-span-8 mb-10">
+                <style>
+                    th.mat-column-no {
+                        font-weight: bold;
+                        font-size: large;
+                    }
+
+                    th.mat-column-name {
+                        font-weight: bold;
+                        font-size: large;
+                    }
+
+                    th.mat-column-difficulty {
+                        font-size: large;
+                    }
+
+                    th.mat-column-status {
+                        font-size: large;
+                    }
+
+                    .mat-column-difficulty {
+                        font-weight: bold;
+                    }
+
+                    .mat-column-status {
+                        font-weight: bold;
+                    }
+                </style>
+
+                <div class="mat-elevation-z2">
+                    <table mat-table [dataSource]="tableData" style="width: 100%;" matSort>
+                        <ng-container matColumnDef="no">
+                            <th mat-header-cell *matHeaderCellDef>No.</th>
+                            <td mat-cell *matCellDef="let challenge">{{ challenge.no }}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Name">
+                                Name
+                            </th>
+                            <td mat-cell *matCellDef="let challenge">{{ challenge.name }}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="difficulty">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header
+                                sortActionDescription="Sort by difficulty">Difficulty</th>
+                            <td mat-cell *matCellDef="let challenge" [ngClass]="challenge.difficulty=='HARD' ? 'text-red-400' :
+                                 (challenge.difficulty=='MEDIUM' ? 'text-blue-400' : 'text-green-400')">
+                                {{ challenge.difficulty }}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header
+                                sortActionDescription="Sort by status">
+                                Status</th>
+                            <td mat-cell *matCellDef="let challenge" [ngClass]="challenge.status=='ACCEPTED' ? 'text-green-400' :
+                            (challenge.status=='TLE' ? 'text-purple-400' : 'text-red-400')">
+                                {{ challenge.status }}
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="challengesTableColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns : challengesTableColumns;"></tr>
+                    </table>
+
+                    <mat-paginator showFirstLastButtons pageSize="10">
+                    </mat-paginator>
+                </div>
+            </div>
+
+            <div class="col-span-8 mb-20">
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Statistics</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="px-10">
+                            <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType">
+                            </canvas>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

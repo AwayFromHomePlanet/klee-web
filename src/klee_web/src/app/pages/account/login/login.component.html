@@ -1,0 +1,43 @@
+<div class="flex bg-gradient-to-r from-green-200 to-blue-600 h-screen w-screen items-center flex-col">
+    <img src="../../../assets/klee-logo.svg" class="w-1/5" alt="Klee Logo">
+    <div class="w-1/4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-10 flex flex-col">
+        <form [formGroup]="loginDetails" (ngSubmit)="onSubmit()"> 
+        <div class="mb-4">
+            <label class="block text-grey-darker text-5xl font-bold mb-10" for="username">
+                Login
+                <hr class="solid">
+            </label>
+            <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
+                Username
+            </label>
+            <input formControlName="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username"
+                type="text" placeholder="Username">
+        </div>
+        <div class="mb-12">
+            <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
+                Password
+            </label>
+            <input formControlName="password" class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-2"
+                id="password" type="password" placeholder="******************">
+                <p class="text-red-600 text-sm italic" *ngIf="!formCompleted"> Please fill in all fields</p>
+                <div class="flex items-center justify-between">
+                    <a class="inline-block align-baseline font-bold text-xs text-red-400 hover:text-blue-darker" href="/reset-password">
+                        Forgot Password?
+                    </a>
+                </div>
+        </div>
+        <div class="flex items-center justify-between">
+            <button class="bg-blue-500 hover:bg-blue-900 text-white text-2xl font-bold py-2 px-4 rounded"
+                type="submit">
+                Sign In
+            </button>
+            <a class=" align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="/register">
+                Don't have an account? <p class="text-end underline">Register</p>
+            </a>
+            
+        </div>
+        </form>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

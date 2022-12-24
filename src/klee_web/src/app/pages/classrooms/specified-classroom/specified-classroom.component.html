@@ -1,0 +1,135 @@
+<div class="h-screen bg-gradient-to-r from-gray-300 to-gray-100">
+    <div class="w-8/12 mx-auto pt-10">
+        <div class="w-full border border-gray-600 bg-gradient-to-r from-orange-300 to-red-400 rounded-md px-6 py-4 mb-16">
+            <p class="text-2xl" style="margin-bottom: 4rem;">Graphs</p>
+
+            <div class="grid grid-cols-2">
+                <div>
+                    <div class="inline-flex">
+                        <img src="" alt="Test" class="rounded-full border h-12 w-12 border-gray-600">
+                        <span class="inline-block pt-3 py-2 ml-2">Teacher Name</span>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-lg float-right pt-2">20 members</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-16">
+            <div class="col-span-2">
+                <div class="rounded-md bg-slate-50 mb-10 shadow-xl">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-9 p-4">
+                            <p class="text-lg">Coursework 1</p>
+
+                            <p class="text-md">Description.</p>
+
+                            <div class="relative">
+                                <mat-progress-spinner mode="determinate" value="40" color="deep-purple" diameter="50"
+                                    class="float-right mr-10 mt-4"></mat-progress-spinner>
+                                <span class="absolute right-12 top-7 font-bold">10 %</span>
+                            </div>
+
+                            <p class="text-lg">Due date: 25 Nov</p>
+
+                            <p class="text-lg" style="margin-bottom: 0;">Solved 5 out of 10 problems</p>
+                        </div>
+
+                        <div class="border-l border-gray-600 col-span-3 rounded-r-md">
+                            <button class="bg-purple-300 p-4 h-full w-full rounded-r-md">View problems
+                                <mat-icon>arrow_forward</mat-icon></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-md bg-slate-50 mb-10 shadow-xl">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-9 p-4">
+                            <p class="text-lg">Coursework 2</p>
+
+                            <p class="text-md">Description.</p>
+
+                            <div class="relative">
+                                <mat-progress-spinner mode="determinate" value="40" color="deep-purple" diameter="50"
+                                    class="float-right mr-10 mt-4"></mat-progress-spinner>
+                                <span class="absolute right-12 top-7 font-bold">10 %</span>
+                            </div>
+
+                            <p class="text-lg">Due date: 26 Nov</p>
+
+                            <p class="text-lg" style="margin-bottom: 0;">Solved 20 out of 30 problems</p>
+                        </div>
+
+                        <div class="border-l border-gray-600 col-span-3 rounded-r-md">
+                            <button class="bg-purple-300 p-4 h-full w-full rounded-r-md">View problems
+                                <mat-icon>arrow_forward</mat-icon></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-md bg-slate-50 mb-10 shadow-xl">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-9 p-4">
+                            <p class="text-lg">Announcement 1</p>
+
+                            <p class="text-md">Description.</p>
+                        </div>
+
+                        <div class="border-l border-gray-600 col-span-3 rounded-r-md">
+                            <button class="bg-purple-300 p-4 h-full w-full rounded-r-md">Read more
+                                <mat-icon>arrow_forward</mat-icon></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-md bg-slate-50 mb-10 shadow-xl">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-9 p-4">
+                            <p class="text-lg">Announcement 2</p>
+
+                            <p class="text-md">Description.</p>
+                        </div>
+
+                        <div class="border-l border-gray-600 col-span-3 rounded-r-md">
+                            <button class="bg-purple-300 p-4 h-full w-full rounded-r-md">Read more
+                                <mat-icon>arrow_forward</mat-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="border border-gray-600 rounded-md px-4 py-3 bg-slate-50" style="min-height: 10rem;">
+                    <p class="text-lg">Due courseworks</p>
+                    <hr style="height: 4px;">
+                    <ul class="px-3">
+                        <li>
+                            <div>
+                                <p class="text-md">Coursework 1</p>
+                                <p class="text-md float-left">Due date: 25 Nov</p>
+
+                                <p class="text-md float-right" style="margin-top: -1.5rem;">View &RightArrow;</p>
+                                <div class="clear-both"></div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr style="height: 2px; margin-bottom: 2px;">
+                            <div>
+                                <p class="text-md">Coursework 2</p>
+                                <p class="text-md float-left">Due date: 26 Nov</p>
+
+                                <p class="text-md float-right" style="margin-top: -1.5rem;">View &RightArrow;</p>
+                                <div class="clear-both"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

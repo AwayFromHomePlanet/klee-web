@@ -1,0 +1,86 @@
+Notes:
+1. These are not all the needed APIs.
+2. Both the input and output are JSON.
+3. Objects that are inside [] are arrays (arrays that contain JSON as elemements).
+4. Some JSON objects don't have their structure defined yet.
+
+
+# maybe redundant since we have /categories alone
+Categories: 
+    GET "/all-categories"
+    input: {}
+    output: [{
+            name :
+            description:
+            nr_problems: 
+            problems_solved:
+            }]
+
+Challenges:
+    GET "/categories/{category_name}"
+    input: { name: }
+    output: [{
+            name:  
+            difficulty: 
+            category: 
+            status: 
+            success:
+            }]
+
+    GET "/challenges/{challenge_name}"
+    input: { name: }
+    output: {
+            name:
+            statement:
+            input:
+            output:
+            difficulty:
+            restrictions:
+            test_input:
+            test_output:
+            submissions: Array of submissions
+            statistics: JSON with details
+            }
+
+    # could be moved into challenges/{challenge_name}/submit-challenge since you want to accesss from a specific challenge
+    # likewise for challenges/{challenge_name}/run_challenge
+    POST "/submit-challenge"
+    POST "/run_challenge"
+    input: {
+            challenge_name: 
+            submission_code:
+            }
+    output: {
+            status:
+            generated_output: [{
+                test_input:
+                test_expected_output:
+                test_actual_output:
+            }] 
+            submission_time:
+            }
+
+Classrooms:
+    GET "/classrooms"
+    input: None
+    output: [{
+        name:
+        description:
+        teacher_name:
+        teacher_img:
+        nr_of_members:
+        due_coursework:
+        }]
+
+    GET "/classrooms/{classroom_id}"
+    input: { classroom_id: }
+    output: {
+        name:
+        description:
+        teacher_name:
+        teacher_img:
+        nr_of_members:
+        assignments: [JSON with details]
+        announcements: [JSON with details]
+        due_coursework
+        }
